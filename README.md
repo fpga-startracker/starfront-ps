@@ -40,20 +40,31 @@ star_tracker_ps/
 ## Quick Start Guide
 
 ### 1. Build the PS Firmware
-To build `eth_receiver.elf` from the terminal without opening the Vitis GUI:
+To compile `eth_receiver.elf` without opening the Vitis GUI:
 
-```powershell
-.\scripts\build_firmware.bat
-```
-*(Or run `ninja -C eth_receiver/build`)*
+* **Windows (CMD / PowerShell):**
+  ```powershell
+  .\scripts\build_firmware.bat
+  ```
+* **Linux / Git Bash / macOS:**
+  ```bash
+  ./build.sh
+  ```
+*(Or run `ninja -C eth_receiver/build` directly)*
 
 ### 2. Download and Run on the Board (JTAG)
 Ensure your board is powered on and connected via JTAG and Ethernet:
 
-```powershell
-& "C:\AMDDesignTools\2025.2\Vitis\bin\xsct.bat" scripts\run_firmware.tcl
-```
+* **Windows (PowerShell):**
+  ```powershell
+  & "C:\AMDDesignTools\2025.2\Vitis\bin\xsct.bat" scripts\run_firmware.tcl
+  ```
+* **Linux / Git Bash:**
+  ```bash
+  ./run.sh
+  ```
 *(Or use `xsct run_ps.tcl`)*
+
 
 ### 3. Stream Images to the FPGA
 Once the firmware is running (IP `192.168.1.10:8080`), stream star images from your PC:
