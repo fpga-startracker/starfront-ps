@@ -5,6 +5,7 @@
 **/resources/
 .rigel_lopper/
 _ide/
+.vscode/
 .Xil/
 compile_commands.json
 .vitisWorkspace.json

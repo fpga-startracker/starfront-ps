@@ -30,4 +30,4 @@ fi
 
 TCL_SCRIPT="$SCRIPT_DIR/run_firmware.tcl"
 echo "Launching firmware via XSCT: $XSCT..."
-"$XSCT" "$TCL_SCRIPT"
+"$XSCT" "$TCL_SCRIPT" "$@"

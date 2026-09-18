@@ -30,6 +30,9 @@ star_tracker_ps/
 │   ├── stream_image.py     # Python tool to stream any PNG/JPG/BMP photo to board
 │   └── test_udp_echo.py    # Basic UDP connectivity check
 │
+├── Docs/                   # Documentation & Architectural Guides
+│   └── README.md           # Dual-Core AMP guide, memory partitioning & IPC
+│
 ├── DUST_fpga_set/          # Star dataset (real/synthetic test images & ground truth)
 ├── .gitignore              # Excludes generated BSP drivers, builds, and logs
 └── README.md               # This file
@@ -55,15 +58,19 @@ To compile `eth_receiver.elf` without opening the Vitis GUI:
 ### 2. Download and Run on the Board (JTAG)
 Ensure your board is powered on and connected via JTAG and Ethernet:
 
-* **Windows (PowerShell):**
+* **Windows (CMD / PowerShell):**
   ```powershell
-  & "C:\AMDDesignTools\2025.2\Vitis\bin\xsct.bat" scripts\run_firmware.tcl
+  .\run.bat                     # Default: load eth_receiver on Core 0
+  .\run.bat <app_name>          # Load another application on Core 0
+  .\run.bat <app_name> 1        # Load application on Core 1 (AMP)
+  .\run.bat path\to\file.elf    # Load custom ELF directly
   ```
 * **Linux / Git Bash:**
   ```bash
-  ./run.sh
+  ./run.sh                      # Default: load eth_receiver on Core 0
+  ./run.sh <app_name> [core_id]
   ```
-*(Or use `xsct run_ps.tcl`)*
+*(Pass `--help` to `run.bat` / `run.sh` to see all available options)*
 
 
 ### 3. Stream Images to the FPGA
@@ -84,3 +91,8 @@ python stream_image.py --file path/to/image.png
 * **Board Port:** `8080` (UDP)
 * **Host PC Static IP:** `192.168.1.50` (Subnet mask `255.255.255.0`)
 * **Default Protocol:** 4-byte sync header (`0xAA55AA55`) followed by 640x480 RGB565 scanlines.
+
+---
+
+## Dual-Core AMP & Memory Architecture
+For detailed instructions on running multiple applications simultaneously across **Core 0** and **Core 1**, memory partitioning with `lscript.ld`, and Inter-Core Communication (IPC), refer to the comprehensive guide in [`Docs/README.md`](Docs/README.md).
