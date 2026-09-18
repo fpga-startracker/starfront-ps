@@ -1,0 +1,39 @@
+# Vitis build output directories
+**/build/
+**/export/
+**/logs/
+**/resources/
+.rigel_lopper/
+_ide/
+.Xil/
+compile_commands.json
+.vitisWorkspace.json
+
+# Auto-generated BSP drivers & FSBL (Vitis regenerates these from .xsa)
+platform/ps7_cortexa9_0/
+platform/zynq_fsbl/
+platform/hw/sdt/
+platform/hw/ps7_init*
+platform/hw/*.bit
+
+# Compiled binaries and intermediate objects
+*.elf
+*.o
+*.d
+*.bin
+*.pdi
+*.lock
+
+# Python & IDE caches
+__pycache__/
+*.py[cod]
+.clangd
+.clangd/
+**/.clangd
+**/.cache/
+*.idx
+
+# Vivado / Vitis logs & temporary runtimes
+*.log
+*.jou
+*runtime.txt
