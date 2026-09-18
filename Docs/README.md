@@ -171,17 +171,17 @@ int main(void)
 
 ### Method 1: Terminal / Command Line (Fastest)
 
-Our updated [`scripts/run_firmware.tcl`](../scripts/run_firmware.tcl) supports core targeting directly:
+Both [`run_all.bat`](../run_all.bat) and [`run.bat`](../run.bat) support core targeting directly:
 
 ```powershell
-# 1. Download and run Core 0 (eth_receiver)
-.\run.bat eth_receiver 0
+# Step 1: Program PL bitstream + load Core 0 (eth_receiver)
+.\run_all.bat eth_receiver --bit ..\starfront-hdl\build\starfront_sim.bit 0
 
-# 2. Download and run Core 1 (your second app)
+# Step 2: Load Core 1 application without resetting the FPGA or Core 0
 .\run.bat star_solver 1
 ```
 
-*(On Linux / WSL / Git Bash, use `./run.sh eth_receiver 0` and `./run.sh star_solver 1`)*
+*(On Linux / WSL / Git Bash, use `./run_all.sh` and `./run.sh`)*
 
 ### Method 2: Vitis Unified IDE (GUI)
 
